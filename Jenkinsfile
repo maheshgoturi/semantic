@@ -46,7 +46,7 @@ pipeline {
 						try {
 							sh "chmod +x ./tag-release"
 							println "Executing sh ./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
-							//sh "./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
+							sh "./tag-release -v -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
 						} catch (Exception e) {
 							println "Failed to tag the build. Marking the build as UNSTABLE. Exception: ${e}"
 							currentBuild.result = 'UNSTABLE'
