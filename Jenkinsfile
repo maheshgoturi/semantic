@@ -45,8 +45,8 @@ pipeline {
 					if ('main'.equals(env.BRANCH_NAME)) {
 						try {
 							sh "chmod +x ./tag-release"
-							sh "git config --global user.name 'Jenkins'"
-							sh "git config --global user.email 'Jenkins@mycontainer.com'"
+							sh "git config --global user.name 'maheshgoturi'"
+							sh "git config --global user.email 'maheshg321@gmail.com'"
 							println "Executing sh ./tag-release -b ${gitBranch} -n -m 'Tagging ${gitBranch} branch' -t 'major'"
 							sh "./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
 						} catch (Exception e) {
