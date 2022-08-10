@@ -8,9 +8,8 @@ pipeline {
 				script {
 					_gitScmVars = checkout scm
 					gitBranch = _gitScmVars.GIT_BRANCH
-					CMABaseVersion = '2.0'
 					println "Git branch: ${gitBranch}"
-					currentBuild.setDescription("${appVersion} <br> ${env.NODE_NAME}")
+					currentBuild.setDescription("${gitBranch} <br> ${env.NODE_NAME}")
 				}
 			}
 		}
@@ -20,7 +19,7 @@ pipeline {
 			steps {
 				script {
 
-						println "INFO: Building ${appVersion}"
+						println "INFO: Building ${gitBranch}"
 
 				}
 			}
@@ -32,7 +31,7 @@ pipeline {
 			steps {
 				script {
 
-					println "INFO: Deploying $appVersion"
+					println "INFO: Deploying $gitBranch"
 
 				}
 			}
