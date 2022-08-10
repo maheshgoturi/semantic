@@ -53,11 +53,9 @@ pipeline {
 				script {
 					if ('main'.equals(env.BRANCH_NAME)) {
 						try {
-							//bat "C:/Programs/Git/bin/git tag ${appVersion} && C:/Programs/Git/bin/git push https://github.com/ideasorg/cma.git ${appVersion}"
-							//bat "git tag ${appVersion} && git push https://github.com/ideasorg/cma.git ${appVersion}"
 							sh "chmod +x ./tag-release"
 							println "Executing sh ./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
-							sh "./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
+							//sh "./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
 						} catch (Exception e) {
 							println "Failed to tag the build. Marking the build as UNSTABLE. Exception: ${e}"
 							currentBuild.result = 'UNSTABLE'
