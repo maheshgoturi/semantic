@@ -27,9 +27,9 @@ pipeline {
 		stage('Build'){
 			steps {
 				script {
-				{
+
 						println "INFO: Building ${appVersion}"
-					}
+
 				}
 			}
 		}
@@ -39,9 +39,9 @@ pipeline {
         stage('Deploy') {
 			steps {
 				script {
-				{
+
 					println "INFO: Deploying $appVersion"
-					}
+
 				}
 			}
         }
