@@ -45,11 +45,33 @@ pipeline {
 					if ('main'.equals(env.BRANCH_NAME)) {
 						try {
 							sh "chmod +x ./tag-release"
-							sh "git config --global user.name 'maheshgoturi'"
-							sh "git config --global user.email 'maheshg321@gmail.com'"
-							sh "git config --list"
-							println "Executing sh ./tag-release -b ${gitBranch} -n -m 'Tagging ${gitBranch} branch' -t 'major'"
+							//sh "git config --global user.name 'maheshgoturi'"
+							//sh "git config --global user.email 'maheshg321@gmail.com'"
+							//sh "git config --list"
+							println "Executing sh ./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
 							sh "./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
+						} catch (Exception e) {
+							println "Failed to tag the build. Marking the build as UNSTABLE. Exception: ${e}"
+							currentBuild.result = 'UNSTABLE'
+						}
+					}
+					
+					if ('dev'.equals(env.BRANCH_NAME)) {
+						try {
+							sh "chmod +x ./tag-release"
+							println "Executing sh ./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'minor'"
+							sh "./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'minor'"
+						} catch (Exception e) {
+							println "Failed to tag the build. Marking the build as UNSTABLE. Exception: ${e}"
+							currentBuild.result = 'UNSTABLE'
+						}
+					}
+					
+					if ('patch'.equals(env.BRANCH_NAME)) {
+						try {
+							sh "chmod +x ./tag-release"
+							println "Executing sh ./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'patch'"
+							sh "./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'patch'"
 						} catch (Exception e) {
 							println "Failed to tag the build. Marking the build as UNSTABLE. Exception: ${e}"
 							currentBuild.result = 'UNSTABLE'
