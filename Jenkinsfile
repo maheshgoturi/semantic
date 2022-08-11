@@ -38,7 +38,7 @@ pipeline {
         }
 		//Deploy stage finished
 		
-		//Tag stage start
+		//Tagging stage start
         stage('tag') {
 			steps {
 				script {
