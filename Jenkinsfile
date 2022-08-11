@@ -47,6 +47,7 @@ pipeline {
 							sh "chmod +x ./tag-release"
 							sh "git config --global user.name 'maheshgoturi'"
 							sh "git config --global user.email 'maheshg321@gmail.com'"
+							sh "git config --list"
 							println "Executing sh ./tag-release -b ${gitBranch} -n -m 'Tagging ${gitBranch} branch' -t 'major'"
 							sh "./tag-release -b ${gitBranch} -m 'Tagging ${gitBranch} branch' -t 'major'"
 						} catch (Exception e) {
